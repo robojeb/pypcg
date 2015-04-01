@@ -8,6 +8,13 @@ __all__ = ['PCG32']
 
 ffi = FFI()
 
+#REMEMBER TO UPDATE THESE AS THINGS CHANGE OR STUFF MIGHT NOT REBUILD RIGHT
+VERSION = '0.0.1'
+PCG_VERSION = '0.94'
+
+def makeModuleName():
+  return 'pcg_c' + '_' + VERSION + '_' + PCG_VERSION
+
 #
 # Extracted from pcg_basic.h
 #
@@ -46,8 +53,10 @@ uint32_t pcg32_boundedrand_r(pcg32_random_t* rng, uint32_t bound);
 ffi.cdef(header)
 #TODO: load the shared object in a better way
 #C_interface = ffi.dlopen(join(dirname(abspath(__file__)),'c_pcg.so'))
-with open('./pcg_basic.c') as source:
-  c_interface = ffi.verify(source.read(), include_dirs=[dirname(abspath(__file__))])
+with open(join(dirname(abspath(__file__)), 'pcg_basic', 'pcg_basic.c')) as source:
+  c_interface = ffi.verify(source.read(),
+                          include_dirs=[join(dirname(abspath(__file__)),'pcg_basic')],
+                          ext_package='pypcg', modulename=makeModuleName())
 
 DEFAULT_SEQUENCE = 184628983
 
