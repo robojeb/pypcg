@@ -95,13 +95,3 @@ class PCG32(Random):
     out |= (c_interface.pcg32_random_r(self._rng_state) & (2**num_extra-1)) << (32*(i+1))
 
     return out
-
-GLOBAL_RANDOM = PCG32()
-
-def srandom(state, seq=DEFAULT_SEQUENCE):
-  c_interface.pcg32_srandom(state, seq)
-
-
-
-def randint(a, b):
-  return c_interface.pcg32_boundedrand((b+1)-a)+a
