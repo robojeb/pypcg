@@ -22,7 +22,7 @@ class CFFIInstall(install):
         install.finalize_options(self)
 
 setup(name='pypcg',
-      version='0.0.1b',
+      version='0.0.2',
       license='MIT',
 
       author="Jeb Brooks",

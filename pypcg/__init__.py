@@ -9,8 +9,8 @@ __all__ = ['PCG32']
 ffi = FFI()
 
 #REMEMBER TO UPDATE THESE AS THINGS CHANGE OR STUFF MIGHT NOT REBUILD RIGHT
-VERSION = '0.0.1'
-PCG_VERSION = '0.94'
+VERSION = '0_0_1'
+PCG_VERSION = '0_94'
 
 def makeModuleName():
   return 'pcg_c' + '_' + VERSION + '_' + PCG_VERSION
