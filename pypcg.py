@@ -56,7 +56,7 @@ ffi.cdef(header)
 with open(join(dirname(abspath(__file__)), 'pcg_basic', 'pcg_basic.c')) as source:
   c_interface = ffi.verify(source.read(),
                           include_dirs=[join(dirname(abspath(__file__)),'pcg_basic')],
-                          ext_package='pypcg', modulename=makeModuleName())
+                          modulename=makeModuleName())
 
 DEFAULT_SEQUENCE = 184628983
 

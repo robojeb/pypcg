@@ -22,7 +22,7 @@ class CFFIInstall(install):
         install.finalize_options(self)
 
 setup(name='pypcg',
-      version='0.0.2',
+      version='0.0.3',
       license='MIT',
 
       author="Jeb Brooks",
@@ -34,9 +34,9 @@ setup(name='pypcg',
       # ext_package='pypcg',
       # ext_modules=[pypcg.ffi.verifier.get_extension()],
 
-      packages=['pypcg'],
-      package_dir={'pypcg': 'pypcg'},
-      package_data={'pypcg': ['pcg_basic/pcg_basic.*']},
+      py_modules=['pypcg'],
+      packages=['pcg_basic'],
+      package_data={'pcg_basic': ['pcg_basic.*']},
 
       install_requires=['cffi'],
       setup_requires=['cffi'],
@@ -44,6 +44,4 @@ setup(name='pypcg',
       cmdclass={
         "build": CFFIBuild,
         "install": CFFIInstall,
-      }
-
-      )
+      })
