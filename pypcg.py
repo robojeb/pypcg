@@ -79,6 +79,9 @@ class PCG32(Random):
   def random(self):
     return float(c_interface.pcg32_random_r(self._rng_state))/float(2**32-1)
 
+  def boundedrand_r(self, bound):
+    return int(c_interface.pcg32_boundedrand_r(self._rng_state, bound))
+
   def seed(self, a=None, seq=DEFAULT_SEQUENCE, version=2):
     #TODO support version 2 so we can support python3
     if type(a) != int:
